@@ -1,0 +1,5 @@
+# The importance of design {#whydesign}
+
+## Study design in ecology
+
+Some general info on design. Why should we carefully consider generating good designs?

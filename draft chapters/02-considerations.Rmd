@@ -1,0 +1,11 @@
+# SCR design considerations {#considerations}
+
+What should we be thinking about when we cooking up a design?
+
+## General concepts
+
+These are things that are common for all ecological studies.
+
+## SCR concepts
+
+These are things that are specific to SCR.

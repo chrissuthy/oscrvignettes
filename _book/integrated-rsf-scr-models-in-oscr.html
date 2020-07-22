@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Vignette 1 Integrated RSF-SCR models in oSCR | oSCR vignettes</title>
+  <meta name="description" content="This bookdown is where we will collate oSCR vignettes." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Vignette 1 Integrated RSF-SCR models in oSCR | oSCR vignettes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown is where we will collate oSCR vignettes." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Vignette 1 Integrated RSF-SCR models in oSCR | oSCR vignettes" />
+  
+  <meta name="twitter:description" content="This bookdown is where we will collate oSCR vignettes." />
+  
+
+<meta name="author" content="Chris Sutherland, Dan Linden &amp; Gates Dupont" />
+
+
+<meta name="date" content="2020-07-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="criteria.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">oSCR: A Book Vignettes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Using this book</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-should-you-read-this-book"><i class="fa fa-check"></i><b>0.1</b> Why should you read this book?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#why-should-you-use-oscr"><i class="fa fa-check"></i><b>0.2</b> Why should you use <code>oSCR</code></a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#getting-set-up"><i class="fa fa-check"></i><b>0.3</b> Getting set up</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="integrated-rsf-scr-models-in-oscr.html"><a href="integrated-rsf-scr-models-in-oscr.html"><i class="fa fa-check"></i><b>1</b> Integrated RSF-SCR models in <code>oSCR</code></a><ul>
+<li class="chapter" data-level="1.1" data-path="integrated-rsf-scr-models-in-oscr.html"><a href="integrated-rsf-scr-models-in-oscr.html#simulating-capture-telemetry-data"><i class="fa fa-check"></i><b>1.1</b> Simulating capture &amp; telemetry data</a></li>
+<li class="chapter" data-level="1.2" data-path="integrated-rsf-scr-models-in-oscr.html"><a href="integrated-rsf-scr-models-in-oscr.html#model-fitting-in-oscr"><i class="fa fa-check"></i><b>1.2</b> Model fitting in <code>oSCR</code></a></li>
+<li class="chapter" data-level="1.3" data-path="integrated-rsf-scr-models-in-oscr.html"><a href="integrated-rsf-scr-models-in-oscr.html#application-to-ny-black-bears"><i class="fa fa-check"></i><b>1.3</b> Application to NY black bears</a></li>
+<li class="chapter" data-level="1.4" data-path="integrated-rsf-scr-models-in-oscr.html"><a href="integrated-rsf-scr-models-in-oscr.html#summary"><i class="fa fa-check"></i><b>1.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="criteria.html"><a href="criteria.html"><i class="fa fa-check"></i><b>2</b> Design criteria</a></li>
+<li class="chapter" data-level="3" data-path="objects.html"><a href="objects.html"><i class="fa fa-check"></i><b>3</b> Preparing design objects</a><ul>
+<li class="chapter" data-level="3.1" data-path="objects.html"><a href="objects.html#background"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="objects.html"><a href="objects.html#creating-statespace-from-a-polygon"><i class="fa fa-check"></i><b>3.2</b> Creating <code>statespace</code> from a polygon</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="objects.html"><a href="objects.html#buffer-the-trappping-area"><i class="fa fa-check"></i><b>3.2.1</b> Buffer the trappping area</a></li>
+<li class="chapter" data-level="3.2.2" data-path="objects.html"><a href="objects.html#generating-a-regular-grid"><i class="fa fa-check"></i><b>3.2.2</b> Generating a regular grid</a></li>
+<li class="chapter" data-level="3.2.3" data-path="objects.html"><a href="objects.html#extracting-the-coordinates"><i class="fa fa-check"></i><b>3.2.3</b> Extracting the coordinates</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="objects.html"><a href="objects.html#creating-alltraps-from-a-polygon"><i class="fa fa-check"></i><b>3.3</b> Creating <code>alltraps</code> from a polygon</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="objects.html"><a href="objects.html#create-all-technically-possible-points"><i class="fa fa-check"></i><b>3.3.1</b> Create all technically possible points</a></li>
+<li class="chapter" data-level="3.3.2" data-path="objects.html"><a href="objects.html#create-all-practically-possible-points"><i class="fa fa-check"></i><b>3.3.2</b> Create all practically possible points</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="objects.html"><a href="objects.html#inspecting-the-objects"><i class="fa fa-check"></i><b>3.4</b> Inspecting the objects</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>4</b> Generating designs</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">oSCR vignettes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="integrated-rsf-scr-models-in-oscr" class="section level1">
+<h1><span class="header-section-number">Vignette 1</span> Integrated RSF-SCR models in <code>oSCR</code></h1>
+<p><em>Dan Linden</em></p>
+<p>Statistical power in a spatial capture-recapture (SCR) analysis is dictated by the collection of captures obtained, particularly the number individuals captured (<span class="math inline">\(n\)</span>) and the number of spatial locations at which each individual was captured. This latter quantity (i.e., spatial recaptures) requires a balance in trap design and configuration to ensure that a representative sample of individuals is observed in multiple locations to provide information on space use and movement.</p>
+<p>Collecting enough spatial recaptures to allow for relevant inferences from an SCR model can be a challenge. Applications of SCR involving rare and/or wide-ranging species often result in sparse encounters and problems with fitting even simple models. Complex space use requires a large and diverse sample of spatial recaptures across the landscape that can rarely be achieved with most sampling designs. In either case, the integration of telemetry data from a subset of individuals in the population of interest may allow for better estimation of the relevant space use and movement parameters.</p>
+<p>Here, we illustrate the approach described by <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span> as implemented in <code>oSCR</code>. We simulate a small data set and fit some SCR models that vary with regards to telemetry integration. Importantly, we distinguish the inferences made by models that assume independent or dependent samples (i.e., collared animals being captured) as described in <span class="citation">Linden, Sirén, and Pekins (<a href="#ref-linden2018" role="doc-biblioref">2018</a>)</span>. We then fit a model to the New York bear data from <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span>.</p>
+<div id="simulating-capture-telemetry-data" class="section level2">
+<h2><span class="header-section-number">1.1</span> Simulating capture &amp; telemetry data</h2>
+<p>We mostly replicate the supplementary <code>R</code> script from <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span> with a few tweaks to simulate some encounter data from a trap array and a collection of telemetry fixes from 4 collared individuals. Aside from some small details, the big change is that the collared individuals were also captured during the trapping survey.</p>
+<p>First, we simulate a state-space with a spatially-correlated landscape covariate:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-1"></a><span class="co"># drink the tidyverse Kool-aid for superior data visualization</span></span>
+<span id="cb3-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb3-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-3"></a></span>
+<span id="cb3-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-4"></a><span class="co">## the following block of code makes up a covariate as a spatially correlated noise field</span></span>
+<span id="cb3-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-5"></a><span class="co">## with an exponential spatial correlation function</span></span>
+<span id="cb3-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-6"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb3-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-7"></a>gr &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">X =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">40</span>, <span class="dt">Y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">40</span>)</span>
+<span id="cb3-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-8"></a>Dmat &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">dist</span>(gr))</span>
+<span id="cb3-9"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-9"></a>V &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>Dmat <span class="op">/</span><span class="st"> </span><span class="dv">5</span>)</span>
+<span id="cb3-10"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-10"></a><span class="co"># below change to matrix multiplication</span></span>
+<span id="cb3-11"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-11"></a>z &lt;-<span class="st"> </span><span class="kw">as.vector</span>(<span class="kw">crossprod</span>(<span class="kw">t</span>(<span class="kw">chol</span>(V)), <span class="kw">rnorm</span>(<span class="dv">1600</span>)))</span>
+<span id="cb3-12"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-12"></a></span>
+<span id="cb3-13"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-13"></a><span class="co"># create the state-space dataframe and plot it</span></span>
+<span id="cb3-14"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-14"></a>ssDF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(gr,<span class="dt">z=</span>z)</span>
+<span id="cb3-15"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-15"></a>ss.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ssDF,<span class="kw">aes</span>(<span class="dt">x=</span>X,<span class="dt">y=</span>Y)) <span class="op">+</span><span class="st"> </span><span class="kw">coord_equal</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>()</span>
+<span id="cb3-16"><a href="integrated-rsf-scr-models-in-oscr.html#cb3-16"></a>ss.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>z)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis_c</span>()</span></code></pre></div>
+<p><img src="oSCRvignettes_files/figure-html/sim1-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>We set some values for sample sizes and model parameters:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb4-1"></a>alpha0 &lt;-<span class="st"> </span><span class="fl">-1.5</span>  <span class="co"># log(encounter rate)</span></span>
+<span id="cb4-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb4-2"></a>sigma  &lt;-<span class="st"> </span><span class="dv">2</span>     <span class="co"># movement scale</span></span>
+<span id="cb4-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb4-3"></a>alpha2 &lt;-<span class="st"> </span><span class="dv">1</span>     <span class="co"># effect of covariate on resource selection</span></span>
+<span id="cb4-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb4-4"></a>Ntel   &lt;-<span class="st"> </span><span class="dv">4</span>     <span class="co"># number of individuals with telemetry devices</span></span>
+<span id="cb4-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb4-5"></a>Nfixes &lt;-<span class="st"> </span><span class="dv">40</span>    <span class="co"># number of telemetry fixes per individual</span></span>
+<span id="cb4-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb4-6"></a>N      &lt;-<span class="st"> </span><span class="dv">50</span>    <span class="co"># population size</span></span></code></pre></div>
+<p>We set up a <span class="math inline">\(7 \times 7\)</span> trap array and identify the raster cells to which they correspond for obtaining the spatial covariate value:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb5-1"></a>X &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">X=</span><span class="kw">seq</span>(<span class="dv">5</span>,<span class="dv">35</span>,<span class="dv">5</span>),<span class="dt">Y=</span><span class="kw">seq</span>(<span class="dv">5</span>,<span class="dv">35</span>,<span class="dv">5</span>))</span>
+<span id="cb5-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb5-2"></a>ntraps &lt;-<span class="st"> </span><span class="kw">nrow</span>(X)</span>
+<span id="cb5-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb5-3"></a>raster.point &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">nrow</span>(X))</span>
+<span id="cb5-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb5-4"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(X)) {</span>
+<span id="cb5-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb5-5"></a>  raster.point[j] &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1600</span>)[(X[j, <span class="dv">1</span>] <span class="op">==</span><span class="st"> </span>gr[, <span class="dv">1</span>]) <span class="op">&amp;</span></span>
+<span id="cb5-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb5-6"></a><span class="st">                              </span>(X[j, <span class="dv">2</span>] <span class="op">==</span><span class="st"> </span>gr[, <span class="dv">2</span>])]}</span></code></pre></div>
+<p>Now we simulate the capture data. We set another seed here to make our example more compelling – a larger simulation would be needed to truly illustrate the superior performance of the integrated likelihood. The activity centers (<span class="math inline">\(\textbf{s}\)</span>) of all <span class="math inline">\(N\)</span> individuals in the population are randomly distributed across the landscape and the pixel id and coordinates are identified for each. The distance matrix between individual activity centers and trap locations is calculated (with help from <code>e2dist</code>) and used to determine the encounter rate for each individual <span class="math inline">\(i\)</span> at trap <span class="math inline">\(j\)</span>. Finally, the hazard rate is converted to a probability and used to simulate binary capture data (<span class="math inline">\(y_{ij}\)</span>).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-1"></a><span class="kw">set.seed</span>(<span class="dv">9933</span>)</span>
+<span id="cb6-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-2"></a><span class="co"># Simulate activity centers of all N individuals in the population</span></span>
+<span id="cb6-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-3"></a>Sid &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1600</span>,N,<span class="dt">replace=</span><span class="ot">TRUE</span>)</span>
+<span id="cb6-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-4"></a><span class="co"># and coordinates</span></span>
+<span id="cb6-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-5"></a>S &lt;-<span class="st"> </span>gr[Sid,]</span>
+<span id="cb6-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-6"></a>  </span>
+<span id="cb6-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-7"></a><span class="co"># Hazard model is used. This seems the most sensible. </span></span>
+<span id="cb6-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-8"></a>D &lt;-<span class="st"> </span>oSCR<span class="op">::</span><span class="kw">e2dist</span>(S,X) <span class="co">## N by ntraps distances</span></span>
+<span id="cb6-9"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-9"></a>Zmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(z[raster.point],<span class="dt">nrow=</span>N,<span class="dt">ncol=</span>ntraps,<span class="dt">byrow=</span><span class="ot">TRUE</span>) <span class="co"># note make dims the same</span></span>
+<span id="cb6-10"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-10"></a>loglam &lt;-<span class="st"> </span>alpha0 <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sigma<span class="op">*</span>sigma))<span class="op">*</span>D<span class="op">*</span>D <span class="op">+</span><span class="st"> </span>alpha2<span class="op">*</span>Zmat</span>
+<span id="cb6-11"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-11"></a>p &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span><span class="kw">exp</span>(loglam))</span>
+<span id="cb6-12"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-12"></a><span class="co"># Now simulate SCR data</span></span>
+<span id="cb6-13"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-13"></a>K &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb6-14"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-14"></a>y &lt;-<span class="kw">array</span>(<span class="ot">NA</span>,<span class="dt">dim=</span><span class="kw">c</span>(N,ntraps))</span>
+<span id="cb6-15"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-15"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){ y[i,] &lt;-<span class="st"> </span><span class="kw">rbinom</span>(ntraps,K,p[i,]) }</span>
+<span id="cb6-16"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-16"></a></span>
+<span id="cb6-17"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-17"></a><span class="co"># Subset data to captured individuals</span></span>
+<span id="cb6-18"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-18"></a>cap &lt;-<span class="st"> </span><span class="kw">apply</span>(y,<span class="dv">1</span>,sum)<span class="op">&gt;</span><span class="dv">0</span></span>
+<span id="cb6-19"><a href="integrated-rsf-scr-models-in-oscr.html#cb6-19"></a>y &lt;-<span class="st"> </span>y[cap,]</span></code></pre></div>
+<p>We now move to the telemetry data, where 4 individuals are chosen to be collared. The individuals need to have “interior” activity centers so that their fix locations can be observed fully within the state space. In a real application, the state space would simply need to encompass all traps and fixes with an appropriate buffer.</p>
+<p>So we identify some possible activity centers for telemetry individuals and, critically, they have to be individuals that were captured. The <code>cap.tel</code> vector identifies the rows in the capture history for <span class="math inline">\(N_{tel}\)</span> individuals, which is needed by <code>oSCR</code> for fitting the dependent integrated models.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-1"></a>poss.tel&lt;-<span class="st"> </span>S[,<span class="dv">1</span>]<span class="op">&gt;</span><span class="dv">5</span> <span class="op">&amp;</span><span class="st"> </span>S[,<span class="dv">1</span>]<span class="op">&lt;</span><span class="dv">35</span> <span class="op">&amp;</span><span class="st"> </span>S[,<span class="dv">2</span>]<span class="op">&gt;</span><span class="dv">5</span> <span class="op">&amp;</span><span class="st"> </span>S[,<span class="dv">2</span>]<span class="op">&lt;</span><span class="dv">35</span></span>
+<span id="cb7-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-2"></a></span>
+<span id="cb7-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-3"></a><span class="co"># Need to account for capture so that dependent models can be explored</span></span>
+<span id="cb7-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-4"></a>tel.guys.id &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">sample</span>(<span class="kw">which</span>(cap <span class="op">&amp;</span><span class="st"> </span>poss.tel),Ntel))</span>
+<span id="cb7-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-5"></a>tel.guys &lt;-<span class="st"> </span>Sid[tel.guys.id]               <span class="co">#which s for each Ntel</span></span>
+<span id="cb7-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-6"></a>cap.tel &lt;-<span class="st"> </span><span class="kw">match</span>(tel.guys.id,<span class="kw">which</span>(cap))   <span class="co">#which row in capture history for each Ntel</span></span>
+<span id="cb7-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-7"></a>sid &lt;-<span class="st"> </span>tel.guys</span>
+<span id="cb7-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb7-8"></a>stel &lt;-<span class="st"> </span>gr[sid,]</span></code></pre></div>
+<p>Instead of directly simulating the fix locations (XY coordinates) of the telemetry data, <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span> simulated the pixel frequencies. These frequencies are simply tallies of fixes within each pixel (<em>x</em> in <span class="math inline">\(1,2,...,nG\)</span>) of the state space, with pixel-level probabilities, <span class="math inline">\(\pi(\textbf{x}|\textbf{s})\)</span>, determined by a multinomial model of resource selection:</p>
+<p><span class="math display">\[ \pi(\textbf{x}|\textbf{s}) = \frac{\lambda(\textbf{x}|\textbf{s})}{\sum_{x}\lambda(\textbf{x}|\textbf{s})} \]</span></p>
+<p>where, <span class="math display">\[ \text{log}(\lambda(\textbf{x}|\textbf{s})) = \alpha_0 - \alpha_1d(\textbf{x},\textbf{s})^2 + \alpha_2\text{z}(\textbf{x})\]</span></p>
+<p>The primary argument by <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span> is that this model of <span class="math inline">\(\lambda(\textbf{x}|\textbf{s})\)</span> can be assumed equivalent between the capture and telemetry data (aside from the intercept, <span class="math inline">\(\alpha_0\)</span>), allowing for a joint estimation of <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_2\)</span> from the likelihoods of each data set. Note that <span class="math inline">\(\alpha_1 = 1/2\sigma^2\)</span>.</p>
+<p>So, we simulate fixes according to our specified model parameters and then double-check that the averages of the simulated fix locations match the selected activity centers.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-1"></a><span class="co"># Make a matrix to store RSF data (telemetry fixes)</span></span>
+<span id="cb8-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-2"></a>nfix&lt;-<span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span>Ntel,<span class="dt">ncol=</span><span class="dv">1600</span>)</span>
+<span id="cb8-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-3"></a></span>
+<span id="cb8-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-4"></a><span class="co"># for each telemetered guy simulate a number of fixes.</span></span>
+<span id="cb8-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-5"></a><span class="co"># note that nfix = 0 for most of the landscape pixels</span></span>
+<span id="cb8-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-6"></a>lammat&lt;-<span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span>Ntel,<span class="dt">ncol=</span><span class="dv">1600</span>)</span>
+<span id="cb8-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-7"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>Ntel){</span>
+<span id="cb8-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-8"></a>  d&lt;-<span class="st"> </span>Dmat[sid[i],]</span>
+<span id="cb8-9"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-9"></a>  lam&lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sigma<span class="op">*</span>sigma))<span class="op">*</span>d<span class="op">*</span>d <span class="op">+</span><span class="st"> </span>alpha2<span class="op">*</span><span class="st"> </span>z)</span>
+<span id="cb8-10"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-10"></a>  pi_i &lt;-<span class="st"> </span>lam<span class="op">/</span><span class="kw">sum</span>(lam)</span>
+<span id="cb8-11"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-11"></a>  nfix[i,]&lt;-<span class="kw">rmultinom</span>(<span class="dv">1</span>,Nfixes,pi_i)</span>
+<span id="cb8-12"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-12"></a>  lammat[i,]&lt;-lam</span>
+<span id="cb8-13"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-13"></a>}</span>
+<span id="cb8-14"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-14"></a><span class="co"># Average fix location (matches activity centers)</span></span>
+<span id="cb8-15"><a href="integrated-rsf-scr-models-in-oscr.html#cb8-15"></a>(sbar &lt;-<span class="st"> </span>(nfix<span class="op">%*%</span><span class="kw">as.matrix</span>(gr))<span class="op">/</span><span class="kw">as.vector</span>(nfix<span class="op">%*%</span><span class="kw">rep</span>(<span class="dv">1</span>,<span class="kw">nrow</span>(gr))))</span></code></pre></div>
+<pre><code>##           X      Y
+## [1,] 31.850 33.825
+## [2,] 16.550  6.325
+## [3,] 19.550 17.625
+## [4,] 30.475 20.900</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb10-1"></a>stel</span></code></pre></div>
+<pre><code>##       X  Y
+## 1351 31 34
+## 256  16  7
+## 700  20 18
+## 830  30 21</code></pre>
+<p>Finally, we can visualize the predicted space usage patterns and then plot the captures of the <span class="math inline">\(N_{tel}\)</span> individuals.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb12-1"></a><span class="co"># expected encounter rates (lambda) for collared guys</span></span>
+<span id="cb12-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb12-2"></a>lamDF &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(</span>
+<span id="cb12-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb12-3"></a>  <span class="kw">data.frame</span>(gr,<span class="kw">t</span>(lammat)),<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>),<span class="dt">names_to=</span><span class="st">&quot;ind&quot;</span>,<span class="dt">values_to=</span><span class="st">&quot;lam&quot;</span>)</span>
+<span id="cb12-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb12-4"></a><span class="co"># plot lambdas by collared individual</span></span>
+<span id="cb12-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb12-5"></a>ss.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>(<span class="dt">data=</span>lamDF,<span class="kw">aes</span>(<span class="dt">fill=</span>lam)) <span class="op">+</span></span>
+<span id="cb12-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb12-6"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>ind)</span></code></pre></div>
+<p><img src="oSCRvignettes_files/figure-html/sim7-1.png" width="720" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-1"></a><span class="co"># collection of capture locations and s for each n</span></span>
+<span id="cb13-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-2"></a>caps.X &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">which</span>(<span class="kw">apply</span>(y,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),sum)<span class="op">&gt;</span><span class="dv">0</span>,<span class="dt">arr.ind=</span>T))</span>
+<span id="cb13-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-3"></a>caps.X[,<span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>)] &lt;-<span class="st"> </span>X[caps.X<span class="op">$</span>col,]; caps.X &lt;-<span class="st"> </span>caps.X[<span class="kw">order</span>(caps.X<span class="op">$</span>row),]</span>
+<span id="cb13-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-4"></a>caps.X &lt;-<span class="st"> </span><span class="kw">data.frame</span>(caps.X,<span class="dt">s=</span>S[cap,][caps.X<span class="op">$</span>row,])</span>
+<span id="cb13-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-5"></a>caps.X<span class="op">$</span>tel &lt;-<span class="st"> </span><span class="kw">match</span>(caps.X<span class="op">$</span>row,cap.tel)</span>
+<span id="cb13-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-6"></a></span>
+<span id="cb13-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-7"></a><span class="co"># plot the capture data, emphasis on collared guys</span></span>
+<span id="cb13-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-8"></a>ss.plot <span class="op">+</span></span>
+<span id="cb13-9"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-9"></a><span class="st">  </span><span class="co"># activity centers of all N, then Ntel</span></span>
+<span id="cb13-10"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-10"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>S,<span class="dt">pch=</span><span class="dv">15</span>,<span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">size=</span><span class="dv">4</span>) <span class="op">+</span></span>
+<span id="cb13-11"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-11"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>stel,<span class="kw">aes</span>(<span class="dt">col=</span><span class="kw">factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">pch=</span><span class="dv">15</span>) <span class="op">+</span></span>
+<span id="cb13-12"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-12"></a><span class="st">  </span><span class="co"># trap of captures for n, then Ntel</span></span>
+<span id="cb13-13"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-13"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>caps.X,<span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">pch=</span><span class="dv">16</span>) <span class="op">+</span></span>
+<span id="cb13-14"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-14"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">data=</span>caps.X,<span class="kw">aes</span>(<span class="dt">x=</span>X,<span class="dt">y=</span>Y,<span class="dt">xend=</span>s.X,<span class="dt">yend=</span>s.Y),<span class="dt">col=</span><span class="st">&quot;gray&quot;</span>,<span class="dt">lwd=</span><span class="fl">1.25</span>) <span class="op">+</span></span>
+<span id="cb13-15"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-15"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>caps.X,<span class="kw">aes</span>(<span class="dt">color=</span><span class="kw">factor</span>(tel)),<span class="dt">size=</span><span class="dv">4</span>,<span class="dt">pch=</span><span class="dv">16</span>) <span class="op">+</span></span>
+<span id="cb13-16"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-16"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">data=</span>caps.X,<span class="kw">aes</span>(<span class="dt">x=</span>X,<span class="dt">y=</span>Y,<span class="dt">xend=</span>s.X,<span class="dt">yend=</span>s.Y,<span class="dt">col=</span><span class="kw">factor</span>(tel)),<span class="dt">lwd=</span><span class="fl">1.25</span>) <span class="op">+</span></span>
+<span id="cb13-17"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-17"></a><span class="st">  </span><span class="co"># trap locations</span></span>
+<span id="cb13-18"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-18"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>X,<span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">size=</span><span class="dv">3</span>,<span class="dt">alpha=</span><span class="fl">0.55</span>) <span class="op">+</span></span>
+<span id="cb13-19"><a href="integrated-rsf-scr-models-in-oscr.html#cb13-19"></a><span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette=</span><span class="st">&quot;Set1&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<p><img src="oSCRvignettes_files/figure-html/sim8-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>The solid squares represent activity centers, crosses are trap locations, and circles are captures with segments indicating the individual. The 4 collared individuals are uniquely identified.</p>
+</div>
+<div id="model-fitting-in-oscr" class="section level2">
+<h2><span class="header-section-number">1.2</span> Model fitting in <code>oSCR</code></h2>
+<p>We now prepare the data for fitting models in <code>oSCR</code>. Since we already have an <span class="math inline">\(i \times j\)</span> matrix of encounters by individuals at traps, we do not need to use the <code>data2oscr</code> function to format the data. But, we <em>do</em> need the binary encounters to be distributed across occasions to use the complimentary log-log encounter model in <code>oSCR</code> (the likelihood code in <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span> was less general). In the absence of occasion-specific effects, we can randomly distribute each encounter to one of the <span class="math inline">\(k = 1, 2, 3\)</span> occasions.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb14-1"></a>y.arr &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>,<span class="dt">dim=</span><span class="kw">c</span>(<span class="kw">dim</span>(y)[<span class="dv">1</span>],ntraps,K))</span>
+<span id="cb14-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb14-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(y)){</span>
+<span id="cb14-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb14-3"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ntraps){</span>
+<span id="cb14-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb14-4"></a>    which.K &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>K,y[i,j])</span>
+<span id="cb14-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb14-5"></a>    y.arr[i,j,which.K] &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb14-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb14-6"></a>}}</span></code></pre></div>
+<p>We load the <code>oSCR</code> package and define the RSF dataframe, which can simply match the state-space dataframe (or potentially be defined at a finer resolution).</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb15-1"></a><span class="co"># Set up the rsfDF (matches ssDF)</span></span>
+<span id="cb15-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb15-2"></a>rsfDF &lt;-<span class="st"> </span>ssDF</span></code></pre></div>
+<p>The telemetry data are then packaged into a list that only requires one object, <code>fixfreq</code>, which contains the <span class="math inline">\(N_{tel} \times nG\)</span> matrix of fix frequencies. Other optional objects in the list are <code>cap.tel</code>, a vector identifying the row of capture for each collared individual, and <code>indCovs</code>, a vector of individual attributes (e.g., sex). One thing to note is that if <code>cap.tel</code> is used, any collared individuals that were <em>not</em> captured need to be sorted to the end of the <code>fixfreq</code> matrix and <code>indCovs</code> vector (obviously they are simply absent from <code>cap.tel</code>). As always, each object must be packaged within a list to support multi-session functionality in <code>oSCR</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb16-1"></a><span class="co"># list of lists (lol) format</span></span>
+<span id="cb16-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb16-2"></a>telemetry &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">fixfreq=</span><span class="kw">list</span>(nfix),</span>
+<span id="cb16-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb16-3"></a>                  <span class="dt">cap.tel=</span><span class="kw">list</span>(cap.tel))</span></code></pre></div>
+<p>The last data preparation step is to make the SCR dataframe for <code>oSCR</code>. This could be done automatically by <code>data2oscr</code> if we were working with a dataframe of encounters but here we manually created our <span class="math inline">\(y_{ijk}\)</span> capture array. In either approach, the entry of <code>telemetry</code> and <code>rsfDF</code> objects signifies the presence of telemetry data and interest in an RSF surface for the SCR model. Importantly, adding an <code>rsfDF</code> object even without any telemetry data will prompt the generation of trap-specific covariates for each column of the <code>rsfDF</code> that indicates a potential landscape covariate.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb17-1"></a><span class="co"># Create the scrFrame </span></span>
+<span id="cb17-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb17-2"></a>sftel &lt;-<span class="st"> </span><span class="kw">make.scrFrame</span>(<span class="dt">caphist =</span> <span class="kw">list</span>(y.arr),</span>
+<span id="cb17-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb17-3"></a>                       <span class="dt">traps =</span> <span class="kw">list</span>(X), </span>
+<span id="cb17-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb17-4"></a>                       <span class="dt">telemetry =</span> telemetry,</span>
+<span id="cb17-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb17-5"></a>                       <span class="dt">rsfDF =</span> <span class="kw">list</span>(rsfDF)</span>
+<span id="cb17-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb17-6"></a>)</span></code></pre></div>
+<p>Finally, we can fit some models. To integrate telemetry data, we need to set the option to either <code>"ind"</code> or <code>"dep"</code> (default is <code>"none"</code>), indicating whether our collared individuals are an independent or dependent sample. We’ll first compare results between a typical SCR model and one with telemetry integration that assumes independence.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-1"></a>fit1 &lt;-<span class="st"> </span><span class="kw">oSCR.fit</span>(<span class="dt">scrFrame=</span>sftel,<span class="dt">ssDF=</span><span class="kw">list</span>(ssDF),<span class="dt">DorN=</span><span class="st">&quot;D&quot;</span>,<span class="dt">encmod=</span><span class="st">&quot;CLOG&quot;</span>,</span>
+<span id="cb18-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-2"></a>                 <span class="co">#rsfDF=list(rsfDF),RSF=TRUE,</span></span>
+<span id="cb18-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-3"></a>                 <span class="dt">trimS=</span>sftel<span class="op">$</span>mdm,</span>
+<span id="cb18-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-4"></a>                 <span class="dt">model=</span><span class="kw">list</span>(D<span class="op">~</span><span class="dv">1</span>,p0<span class="op">~</span>z,sigma<span class="op">~</span><span class="dv">1</span>,path<span class="op">~</span><span class="dv">1</span>))</span>
+<span id="cb18-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-5"></a></span>
+<span id="cb18-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-6"></a>fit2 &lt;-<span class="st"> </span><span class="kw">oSCR.fit</span>(<span class="dt">scrFrame=</span>sftel,<span class="dt">ssDF=</span><span class="kw">list</span>(ssDF),<span class="dt">DorN=</span><span class="st">&quot;D&quot;</span>,<span class="dt">encmod=</span><span class="st">&quot;CLOG&quot;</span>,</span>
+<span id="cb18-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-7"></a>                 <span class="dt">rsfDF=</span><span class="kw">list</span>(rsfDF),<span class="dt">RSF=</span><span class="ot">TRUE</span>,<span class="dt">telemetry=</span><span class="st">&quot;ind&quot;</span>,</span>
+<span id="cb18-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-8"></a>                 <span class="dt">trimS=</span>sftel<span class="op">$</span>mdm,</span>
+<span id="cb18-9"><a href="integrated-rsf-scr-models-in-oscr.html#cb18-9"></a>                 <span class="dt">model=</span><span class="kw">list</span>(D<span class="op">~</span><span class="dv">1</span>,p0<span class="op">~</span>z,sigma<span class="op">~</span><span class="dv">1</span>,path<span class="op">~</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb19-1"></a><span class="kw">data.frame</span>(<span class="dt">fit1=</span>fit1<span class="op">$</span>outStats,<span class="dt">fit2=</span>fit2<span class="op">$</span>outStats[,<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>],</span>
+<span id="cb19-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb19-2"></a>           <span class="dt">truth =</span> <span class="kw">c</span>(alpha0,<span class="kw">log</span>(sigma),alpha2,<span class="kw">log</span>(N<span class="op">/</span><span class="dv">1600</span>)))</span></code></pre></div>
+<pre><code>##   fit1.parameters  fit1.mle fit1.std.er   fit2.mle fit2.std.er      truth
+## 1  p0.(Intercept) -2.005576   0.4521090 -1.5074864  0.33108019 -1.5000000
+## 2 sig.(Intercept)  0.889889   0.1648810  0.6483914  0.03608053  0.6931472
+## 3        t.beta.z  1.287438   0.3229795  1.0670170  0.13865802  1.0000000
+## 4  d0.(Intercept) -3.576972   0.2858384 -3.4862682  0.28572999 -3.4657359</code></pre>
+<p>The parameter estimates of the integrated model are all closer to the data-generating values and the standard errors are much lower, at least for the parameters relating to the encounter model.</p>
+<p>We can then fit an integrated model that admits dependence between the samples, since our collared individuals were also captured.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb21-1"></a>fit3 &lt;-<span class="st"> </span><span class="kw">oSCR.fit</span>(<span class="dt">scrFrame=</span>sftel,<span class="dt">ssDF=</span><span class="kw">list</span>(ssDF),<span class="dt">DorN=</span><span class="st">&quot;D&quot;</span>,<span class="dt">encmod=</span><span class="st">&quot;CLOG&quot;</span>,</span>
+<span id="cb21-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb21-2"></a>                <span class="dt">rsfDF=</span><span class="kw">list</span>(rsfDF),<span class="dt">RSF=</span><span class="ot">TRUE</span>,<span class="dt">telemetry=</span><span class="st">&quot;dep&quot;</span>,</span>
+<span id="cb21-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb21-3"></a>                <span class="dt">trimS=</span>sftel<span class="op">$</span>mdm,</span>
+<span id="cb21-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb21-4"></a>                <span class="dt">model=</span><span class="kw">list</span>(D<span class="op">~</span><span class="dv">1</span>,p0<span class="op">~</span>z,sigma<span class="op">~</span><span class="dv">1</span>,path<span class="op">~</span><span class="dv">1</span>))</span></code></pre></div>
+<p>The parameter estimates (not shown here) are largely the same but this model is more appropriate because our inferences on space use came from a sample of 21 individuals, not 25 (21 captured + 4 collared). The other benefit of this model is that the activity center estimates for the 4 collared individuals are going to be far more accurate and precise. We can illustrate the difference by calculating and mapping the posterior distributions of <strong>s</strong> for the <span class="math inline">\(N_{tel}\)</span> individuals.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-1"></a><span class="co"># telemetry = independent</span></span>
+<span id="cb22-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-2"></a>pred2 &lt;-<span class="st"> </span><span class="kw">predict.oSCR</span>(fit2)</span>
+<span id="cb22-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-3"></a>pred.s2 &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(</span>
+<span id="cb22-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-4"></a>  <span class="kw">data.frame</span>(gr,<span class="kw">t</span>(pred2<span class="op">$</span>preds[[<span class="dv">1</span>]][cap.tel,])),<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>),<span class="dt">names_to=</span><span class="st">&quot;ind&quot;</span>,<span class="dt">values_to=</span><span class="st">&quot;Pr(s)&quot;</span>)</span>
+<span id="cb22-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-5"></a></span>
+<span id="cb22-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-6"></a><span class="co"># plot Pr(s) by collared individual</span></span>
+<span id="cb22-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-7"></a>ss.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>(<span class="dt">data=</span>pred.s2,<span class="kw">aes</span>(<span class="dt">fill=</span><span class="st">`</span><span class="dt">Pr(s)</span><span class="st">`</span>)) <span class="op">+</span></span>
+<span id="cb22-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb22-8"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>ind) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Independent&quot;</span>)</span></code></pre></div>
+<p><img src="oSCRvignettes_files/figure-html/mod8-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-1"></a><span class="co"># telemetry = dependent</span></span>
+<span id="cb23-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-2"></a>pred3 &lt;-<span class="st"> </span><span class="kw">predict.oSCR</span>(fit3)</span>
+<span id="cb23-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-3"></a>pred.s3 &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(</span>
+<span id="cb23-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-4"></a>  <span class="kw">data.frame</span>(gr,<span class="kw">t</span>(pred3<span class="op">$</span>preds[[<span class="dv">1</span>]][cap.tel,])),<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>),<span class="dt">names_to=</span><span class="st">&quot;ind&quot;</span>,<span class="dt">values_to=</span><span class="st">&quot;Pr(s)&quot;</span>)</span>
+<span id="cb23-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-5"></a></span>
+<span id="cb23-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-6"></a><span class="co"># plot Pr(s) by collared individual</span></span>
+<span id="cb23-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-7"></a>ss.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>(<span class="dt">data=</span>pred.s3,<span class="kw">aes</span>(<span class="dt">fill=</span><span class="st">`</span><span class="dt">Pr(s)</span><span class="st">`</span>)) <span class="op">+</span></span>
+<span id="cb23-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb23-8"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>ind) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Dependent&quot;</span>)</span></code></pre></div>
+<p><img src="oSCRvignettes_files/figure-html/mod8-2.png" width="480" style="display: block; margin: auto;" /></p>
+<p>The increased accuracy and precision in estimating the latent activity centers should improve other parameter estimates, most notably if the point process model is inhomogeneous and variation in density is being explored.</p>
+</div>
+<div id="application-to-ny-black-bears" class="section level2">
+<h2><span class="header-section-number">1.3</span> Application to NY black bears</h2>
+<p>The application in <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span> comes from a study on black bears in New York <span class="citation">(Sun <a href="#ref-sun2014" role="doc-biblioref">2014</a>)</span>. The data object (<code>nybears</code>) can be loaded and used to replicate their analysis. In this case, we will use <code>data2oscr</code> to create our SCR dataframe. Also, the telemetry data are raw fix locations that require some manipulation for use in the integrated model.</p>
+<p>First, the data are loaded and the UTM coordinates are rescaled so that 1 distance unit = 10 km.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb24-1"></a><span class="kw">data</span>(<span class="st">&quot;nybears&quot;</span>)</span>
+<span id="cb24-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb24-2"></a><span class="kw">ls</span>(nybears)</span></code></pre></div>
+<pre><code>## [1] &quot;edf&quot;       &quot;elevation&quot; &quot;K&quot;         &quot;ss&quot;        &quot;tdf&quot;       &quot;teldata&quot;  
+## [7] &quot;traplocs&quot;  &quot;y2d&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-1"></a><span class="co"># capture data</span></span>
+<span id="cb26-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-2"></a>edf &lt;-<span class="st"> </span>nybears<span class="op">$</span>edf</span>
+<span id="cb26-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-3"></a>K &lt;-<span class="st"> </span>nybears<span class="op">$</span>K</span>
+<span id="cb26-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-4"></a><span class="co"># rescale spatial coordinates so each unit = 10km</span></span>
+<span id="cb26-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-5"></a>tdf &lt;-<span class="st"> </span>nybears<span class="op">$</span>tdf</span>
+<span id="cb26-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-6"></a>tdf[,<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span>tdf[,<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]<span class="op">/</span><span class="fl">1e4</span></span>
+<span id="cb26-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-7"></a><span class="kw">colnames</span>(tdf)[<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>)</span>
+<span id="cb26-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-8"></a>ntraps &lt;-<span class="st"> </span><span class="kw">nrow</span>(tdf)</span>
+<span id="cb26-9"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-9"></a></span>
+<span id="cb26-10"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-10"></a>ss &lt;-<span class="st"> </span>nybears<span class="op">$</span>ss<span class="op">/</span><span class="fl">1e4</span></span>
+<span id="cb26-11"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-11"></a><span class="kw">colnames</span>(ss) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>)</span>
+<span id="cb26-12"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-12"></a></span>
+<span id="cb26-13"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-13"></a><span class="co"># telemetry data</span></span>
+<span id="cb26-14"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-14"></a>fixes &lt;-<span class="st"> </span>nybears<span class="op">$</span>teldata[,<span class="kw">c</span>(<span class="st">&quot;animalid&quot;</span>,<span class="st">&quot;X_UTM&quot;</span>,<span class="st">&quot;Y_UTM&quot;</span>)]</span>
+<span id="cb26-15"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-15"></a><span class="kw">colnames</span>(fixes)&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ind&quot;</span>,<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>)</span>
+<span id="cb26-16"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-16"></a>fixes[,<span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>)] &lt;-<span class="st"> </span>fixes[,<span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>)]<span class="op">/</span><span class="fl">1e4</span></span>
+<span id="cb26-17"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-17"></a></span>
+<span id="cb26-18"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-18"></a><span class="co"># create the state space and RSF surfaces with elevation covariate</span></span>
+<span id="cb26-19"><a href="integrated-rsf-scr-models-in-oscr.html#cb26-19"></a>ssDF &lt;-<span class="st"> </span>rsfDF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(ss,<span class="dt">z=</span>nybears<span class="op">$</span>elevation)</span></code></pre></div>
+<p>An important consideration now is that the telemetry data are from GPS collars with an hourly fix rate. The RSF model assumes independent observations of space use and short time intervals between observations should lead to serial autocorrelation that violates assumptions about independence. <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span> spend their penultimate paragraph discussing this issue and argue it is less of a problem than it might seem. A comprehensive solution would be to model the correlation (e.g., <span class="citation">Johnson et al. (<a href="#ref-johnson2008" role="doc-biblioref">2008</a>)</span>). A potentially sufficient solution, one used by <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span>, is to thin the telemetry fixes.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb27-1"></a>kp&lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="kw">nrow</span>(fixes),<span class="dt">length=</span><span class="fl">0.10</span><span class="op">*</span><span class="kw">nrow</span>(fixes)) <span class="co">#keep x% of fixes</span></span>
+<span id="cb27-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb27-2"></a>fixes.thin &lt;-<span class="st"> </span>fixes[kp,]</span></code></pre></div>
+<p>The next step is to take these telemetry fixes and convert them into the <span class="math inline">\(N_{tel} \times nG\)</span> matrix of fix frequencies. This is achieved by the <code>telemetry.processor</code> function, which requires dataframes of the RSF and fixes (input as session-specific lists) and creates several objects including the <code>nfreq</code> that is needed here. Note we include a vector of indicators for sex to the <code>indCovs</code> object just for illustration (the values are random and we do not fix any sex-specific models).</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb28-1"></a><span class="co"># create the individual by pixel frequencies of fixes</span></span>
+<span id="cb28-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb28-2"></a>nfix &lt;-<span class="st"> </span><span class="kw">telemetry.processor</span>(<span class="kw">list</span>(rsfDF),<span class="kw">list</span>(fixes.thin))<span class="op">$</span>nfreq</span>
+<span id="cb28-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb28-3"></a></span>
+<span id="cb28-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb28-4"></a><span class="co"># create the telemetry object for oSCR (note, nfix already a list)</span></span>
+<span id="cb28-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb28-5"></a>telemetry &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">fixfreq=</span>nfix, <span class="dt">indCovs=</span><span class="kw">list</span>(<span class="kw">data.frame</span>(<span class="dt">sex=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))))</span></code></pre></div>
+<p>Finally, we package the data with the <code>data2oscr</code> function in order to create our SCR dataframe and fit the model. Because there were no collared animals captured, we fit the independent version.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-1"></a><span class="co"># create the scrFrame from data2oscr</span></span>
+<span id="cb29-2"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-2"></a>oSCR.dat &lt;-<span class="st"> </span><span class="kw">data2oscr</span>(<span class="dt">edf =</span> edf,</span>
+<span id="cb29-3"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-3"></a>                      <span class="dt">sess.col =</span> <span class="dv">1</span>,</span>
+<span id="cb29-4"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-4"></a>                      <span class="dt">id.col   =</span> <span class="dv">2</span>,</span>
+<span id="cb29-5"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-5"></a>                      <span class="dt">occ.col  =</span> <span class="dv">3</span>,</span>
+<span id="cb29-6"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-6"></a>                      <span class="dt">trap.col =</span> <span class="dv">4</span>,</span>
+<span id="cb29-7"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-7"></a>                      <span class="dt">sex.col  =</span> <span class="dv">5</span>,</span>
+<span id="cb29-8"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-8"></a>                      <span class="dt">tdf =</span> <span class="kw">list</span>(tdf),</span>
+<span id="cb29-9"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-9"></a>                      <span class="dt">K =</span> K,</span>
+<span id="cb29-10"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-10"></a>                      <span class="dt">ntraps =</span> ntraps,</span>
+<span id="cb29-11"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-11"></a>                      <span class="dt">rsfDF =</span> <span class="kw">list</span>(rsfDF),</span>
+<span id="cb29-12"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-12"></a>                      <span class="dt">telemetry =</span> telemetry</span>
+<span id="cb29-13"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-13"></a>                      )</span>
+<span id="cb29-14"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-14"></a>sftel &lt;-<span class="st"> </span>oSCR.dat<span class="op">$</span>scrFrame</span>
+<span id="cb29-15"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-15"></a></span>
+<span id="cb29-16"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-16"></a><span class="co"># fit the model &quot;SCR+RSF&quot; from Royle et al. 2013</span></span>
+<span id="cb29-17"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-17"></a>fit &lt;-<span class="st"> </span><span class="kw">oSCR.fit</span>(<span class="dt">scrFrame=</span>sftel,<span class="dt">ssDF=</span><span class="kw">list</span>(ssDF),<span class="dt">DorN=</span><span class="st">&quot;D&quot;</span>,<span class="dt">encmod=</span><span class="st">&quot;CLOG&quot;</span>,</span>
+<span id="cb29-18"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-18"></a>                <span class="dt">rsfDF=</span><span class="kw">list</span>(rsfDF),<span class="dt">RSF=</span><span class="ot">TRUE</span>,<span class="dt">telemetry=</span><span class="st">&quot;ind&quot;</span>,</span>
+<span id="cb29-19"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-19"></a>                <span class="dt">trimS=</span>sftel<span class="op">$</span>mdm,</span>
+<span id="cb29-20"><a href="integrated-rsf-scr-models-in-oscr.html#cb29-20"></a>                <span class="dt">model=</span><span class="kw">list</span>(D<span class="op">~</span><span class="dv">1</span>,p0<span class="op">~</span>z,sigma<span class="op">~</span><span class="dv">1</span>,path<span class="op">~</span><span class="dv">1</span>))</span></code></pre></div>
+<pre><code>##  Model:  D ~ 1 p0 ~ z sigma ~ 1 path ~ 1
+##  Run time:  28.06683  minutes
+##  AIC:  2746.351
+##  
+## Summary table: 
+##                 Estimate    SE       z P(&gt;|z|)
+## p0.(Intercept)    -3.100 0.273 -11.341   0.000
+## t.beta.z          -0.263 0.120  -2.184   0.029
+## sig.(Intercept)   -0.812 0.036 -22.255   0.000
+## d0.(Intercept)    -3.968 0.243 -16.343   0.000
+## psi.constant      -0.305 0.352  -0.867   0.386
+## *Density intercept is log(individuals per pixel) 
+##   Nhat(state-space) = exp(d0.)*nrow(ssDF)
+##   (caution is warranted when model contains density covariates)</code></pre>
+<p>The estimates largely match those of model “SCR+RSF” in Table 1 in <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span>, with small differences due to a slightly modified state-space (note the SEs are identical). All other model versions in Table 1 could be fit here by changing whether the telemetry integration occurs or which model components use elevation as a covariate (e.g., <code>D~z</code>). The code used here can be accessed as an <code>oSCR</code> help file with <code>?telemetry</code>.</p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">1.4</span> Summary</h2>
+<p>Here we have illustrated how to use <code>oSCR</code> to integrate telemetry data with spatial captures into a joint SCR model following the approach of <span class="citation">Royle et al. (<a href="#ref-royle2013" role="doc-biblioref">2013</a>)</span>. The resulting effort can improve parameter estimation and potentially facilitate sparse data situations and/or variation in resource selection that cannot be addressed with the capture data alone.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-johnson2008">
+<p>Johnson, Devin S, Dana L Thomas, Jay M Ver Hoef, and Aaron Christ. 2008. “A General Framework for the Analysis of Animal Resource Selection from Telemetry Data.” <em>Biometrics</em> 64 (3): 968–76.</p>
+</div>
+<div id="ref-linden2018">
+<p>Linden, Daniel W, Alexej PK Sirén, and Peter J Pekins. 2018. “Integrating Telemetry Data into Spatial Capture–Recapture Modifies Inferences on Multi-Scale Resource Selection.” <em>Ecosphere</em> 9 (4): e02203.</p>
+</div>
+<div id="ref-royle2013">
+<p>Royle, J Andrew, Richard B Chandler, Catherine C Sun, and Angela K Fuller. 2013. “Integrating Resource Selection Information with Spatial Capture–Recapture.” <em>Methods in Ecology and Evolution</em> 4 (6): 520–30.</p>
+</div>
+<div id="ref-sun2014">
+<p>Sun, Catherine. 2014. “Estimating Black Bear Population Density in the Southern Black Bear Range of New York with a Non-Invasive, Genetic, Spatial Capture-Recapture Study.” Master’s Thesis. Ithaca, New York, USA: Cornell University.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="criteria.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["oSCRvignettes.pdf", "oSCRvignettes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

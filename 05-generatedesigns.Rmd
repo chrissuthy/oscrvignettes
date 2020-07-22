@@ -1,0 +1,3 @@
+# Generating designs {#design}
+
+Now with data, we can generate some designs.

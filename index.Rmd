@@ -1,0 +1,48 @@
+--- 
+title: "oSCR vignettes"
+author: "Chris Sutherland, Dan Linden & Gates Dupont"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib, oSCRtelemetry.bib]
+biblio-style: apalike
+link-citations: true
+description: "This bookdown is where we will collate `oSCR` vignettes."
+---
+
+# Using this book {-}
+
+## Why should you read this book?
+
+The goal of this bookdown is to provide a complete overview of the theory and methodology of study design for spatial capture-recapture, and to empower our users to confidently generate optimized sampling design for their own use.
+
+## Why should you use `oSCR`
+
+The main function in `oSCR` does likelihood analysis of several classes of spatial capture-recapture (SCR) models. There are also a suite of helper functions for formatting and processing data objects. Here are a few of the things that motivated our development of the package:
+ 
+1. 100% native `R` code, making it (reasonably) accessible to people who know `R` and presumably extensible by ordinary `R` programmers.
+2. Because it's written in `R`, you can look at the code to figure out exactly what's going on.
+3. It's a bit slower compared to `secr`, but we think it's quite robust to massive-sized problems.
+4. The data structure is relatively simple, just as ordinary `R` lists (for the most part).
+5. The models accommodate least-cost path models and models that include telemetry data and resource selection functions.
+6. `oSCR` forces you to define the state-space of the point process which we think is important to understanding an analysis.
+
+## Getting set up
+
+So, using this book of course requires that the `oSCR` package is loaded:
+
+```{r eval=FALSE}
+#remotes::install_github("jaroyle/oSCR") 
+library(oSCR)
+```
+
+But you will also need a few others:
+
+```{r eval=FALSE}
+library(ggplot2)
+library(raster)
+library(sf)
+library(viridis)
+```
+
+If you have any issues or questions, we have a very responsive, and friendly [user group](https://groups.google.com/forum/#!forum/oscr_package).
