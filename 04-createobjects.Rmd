@@ -206,3 +206,7 @@ points(alltraps, pch = 16, cex = 0.7,  col = "blue")
 Great! Both objects are created and spatially aligned, and the units appear to be on the km scale. These are the landscape (`statespace`) and trap (`alltraps`) inputs for `scrdesignGA()`.
 
 As previously mentioned: if you have any issues or questions, we have a very responsive, and friendly [user group](https://groups.google.com/forum/#!forum/oscr_package).
+
+```{r save_RData, include=F}
+save.image(file='04-createobjects.RData')
+```

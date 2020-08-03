@@ -14,11 +14,16 @@ description: "This bookdown is where we will collate `oSCR` vignettes."
 
 ## Why should you read this book?
 
-The goal of this bookdown is to provide a complete overview of the theory and methodology of study design for spatial capture-recapture, and to empower our users to confidently generate optimized sampling design for their own use.
+The goal of this bookdown is to provide a complete overview of the theory and methodology of two topics (at this point) within spatial capture-recapture:
+
+1. Integrating telemtry data to estimate resource selection functions.
+2. Optimizing sampling design toward statistical objectives
+
+More broadly, by providing them with a thorough discussion of these advanced topics, we aim to empower our users to apply these tools in their own research.
 
 ## Why should you use `oSCR`
 
-The main function in `oSCR` does likelihood analysis of several classes of spatial capture-recapture (SCR) models. There are also a suite of helper functions for formatting and processing data objects. Here are a few of the things that motivated our development of the package:
+The main function in `oSCR` performs likelihood analysis of several classes of spatial capture-recapture (SCR) models. There are also a suite of helper functions for formatting and processing data objects. Here are a few of the things that motivated our development of the package:
  
 1. 100% native `R` code, making it (reasonably) accessible to people who know `R` and presumably extensible by ordinary `R` programmers.
 2. Because it's written in `R`, you can look at the code to figure out exactly what's going on.
