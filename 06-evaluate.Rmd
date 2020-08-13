@@ -1,5 +1,11 @@
 # Evaluation by simulation {#evaluate}
 
+*Gates Dupont & Chris Sutherland*
+
+```{r load_RData, include=F}
+load(file='04-createobjects.RData')
+testdesign <- readRDS("scrdesignGA_output/testdesign_200_20_1500.rds")
+```
 
 ## Evaluation by simulation
 
@@ -15,7 +21,7 @@ We illustrate this using `simulator()`, which executes the following:
 
 Here's the simulation function that we use. It's faily straightforward, but has a few extra elements to help with troubleshooting. 
 
-```{r simulator, eval=T, include=T}
+```{r simulator, eval=T, include=T, message=F}
 
 require(oSCR)
 require(dplyr)
@@ -167,17 +173,22 @@ Running the simulations is straightforward with `simulator()`.
 
 ```{r sim_setup, eval = T, include = T}
 # Assign study are ojbects
-ss <- pakSS
-traps <- testdesign_1500$optimaltraps
+ss <- statespace
+traps <- testdesign$optimaltraps # "traps" refers to the design in simulator()
 
 # Assign simulation values
+beta0      <- 0.025
 K          <- 5
-p0_sim     <- 0.2
-sigma_sim  <- 2.59
+p0_sim     <- exp(beta0)/K
+sigma_sim  <- 3.250
 N_sim      <- 300
 ```
 
-```{r runs_sims, eval = F, include = T}
+```{r load_sims, eval=T, include=F}
+# simout <- readRDS("simulator_output/simout_50.rds")
+```
+
+```{r runs_sims, eval = T, include = T}
 # Simulate using same parameter values as design
 simout <- simulator(
   traps = traps, ss = ss, K = K, 
@@ -199,8 +210,8 @@ Other useful metrics include (though not limited to):
 - scaled root mean squared error (accuracy)
 - coverage
 
-```{r load_sim_results_50, eval=T, include=F}
-simout <- readRDS("data/simout_50.rds")
+```{r save_sims, eval=T, include=F}
+saveRDS(simout, file="simulator_output/simout_50.rds")
 ```
 
 ```{r sim_evals, eval = T, include = T}
