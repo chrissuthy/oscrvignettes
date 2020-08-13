@@ -8,6 +8,8 @@ load(file='04-createobjects.RData')
 
 Now with data, we can demonstrate the design-generation process using our novel framework. This framework employs a genetic algorithm to solve the *k-of-n* problem of trap selection according to one of the previously described design criteria, which are considered to be possible study objectives for selection by the user. For more detail on the genetic algorithim, we refer the reader to Wolters et al. (2015), as well as Appendix S1 in Dupont et al. (2020), which describes the algorithm in this context. The most important details, however, will be described below.
 
+## Initial setup and parameterization
+
 Before getting started, a few packages should be loaded:
 
 ```{r pkgs, message = F}
@@ -52,6 +54,9 @@ Finally, we need to determine the number of traps available for inclusion in the
 ntraps <- 50
 ```
 
+
+## Design-finding algorithm
+
 Now that we have everything in place, we can run the design-finding algorithm. This is a toy exammple of what the paramterization should look like, followed by a more robust specification below. Here we use `popsize = 50`, `keepbest = 5`, and `ngen = 50`. In brief, the genetic algorithm is in the broader class of evolutionary algorithms, and borrows from evolutionary biology: `popsize` is the number of randonly-generated designs per generation, `keepbest` determines how many of those to keep for each generation (0.1 survival probability here), abd `ngen` is the number of generations to run, during which the design will "evolve." 
 
 ```{r load_genetic_algo, eval=T, include=F}
@@ -86,6 +91,8 @@ par(mfrow = c(1,1))           # Restore plotting settings
 ```
 
 The critical thing to notice here is that the algorithm did not converge on a an "optimal" design, which we know given that the red line, labelled "Pop best", has yet to reach a clear minimum value maintained across many generations. Further, the middle plot showing the design output seems to lack any apparent pattern in it's structure, suggesting the process hasn't reached completion. This might not be obvious at first, but wil become more noticeable and intuitive after spending more time using the function. 
+
+## Supply a cluster to the algorithm
 
 The lack of convergance means that we have to allow the algorithm to run for many more generations in order to find an "optimal" solution. According to Wolters et al. (2015), it's best to set `ngen` to 1500+ generations, which we have also confirmed with our own testing. Running the algorithm for so many generations certainly takes a bit longer, but to speed it up we can supply a cluster to the function and parallelize the process. Depending on your machine, this can greatly reduce the amount of time it takes to generate a design. We suggest using 1500 generations for generating the final design, along with bumping up `popsize` to 200 and `keepbest` to 10% of that, or here, 20. However, if you find that the algorithm will take far too long to finish on your machine, you can bump `popsize` back down to 50, and likewise, `keepbest` down to 5. Although this isn't considered best practice, we have yet to come across substaintially different results using those settings.
 
@@ -139,4 +146,4 @@ Here we see that the design has converged after around 1100 generations, with th
 
 We describe the strcutral characteristics of designs from each criteria as follows: for Qp, that would be space-filling, space-constraining for Qpm (explored in this example), and clustered space-filling for Qpb. The third plot shows a histogram of trap spacing relative to sigma, which is informative about the possible resolution of the design in capturing the value of sigma. In the case of the design we generated, resolution for capturing sigma should be comprehensive, given the variation in trap spacing.
 
-Once we have a final design, we can recommend evaluation its performance using simulation, as done in Dupont et al. (2020).
+Once we have a final design, we recommend evaluating its performance using simulation, as done in Dupont et al. (2020).
