@@ -5,6 +5,8 @@
 ```{r load_RData, include=F}
 load(file='04-createobjects.RData')
 testdesign <- readRDS("scrdesignGA_output/testdesign_200_20_1500.rds")
+library(ggplot2)
+library(ggpubr)
 ```
 
 ## Evaluation by simulation
@@ -185,10 +187,10 @@ N_sim      <- 300
 ```
 
 ```{r load_sims, eval=T, include=F}
-# simout <- readRDS("simulator_output/simout_50.rds")
+simout <- readRDS("simulator_output/simout_50.rds")
 ```
 
-```{r runs_sims, eval = T, include = T}
+```{r runs_sims, eval = F, include = T}
 # Simulate using same parameter values as design
 simout <- simulator(
   traps = traps, ss = ss, K = K, 
@@ -211,7 +213,7 @@ Other useful metrics include (though not limited to):
 - coverage
 
 ```{r save_sims, eval=T, include=F}
-saveRDS(simout, file="simulator_output/simout_50.rds")
+#saveRDS(simout, file="simulator_output/simout_50.rds")
 ```
 
 ```{r sim_evals, eval = T, include = T}
