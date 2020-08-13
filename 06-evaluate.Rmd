@@ -1,3 +1,10 @@
+---
+title: "Evaluation by simulation"
+output: 
+  html_document:
+    code_folding: hide
+---
+
 # Evaluation by simulation {#evaluate}
 
 *Gates Dupont & Chris Sutherland*
@@ -9,7 +16,7 @@ library(ggplot2)
 library(ggpubr)
 ```
 
-## Evaluation by simulation
+## Simulating SCR data
 
 We can evaluate a design by simulating data and recovering parameter estimates.
 
@@ -21,15 +28,12 @@ We illustrate this using `simulator()`, which executes the following:
 4. Fits a basic SCR model using `oSCR.fit()`
 5. Returns parameter estimates and summary statistics
 
-Here's the simulation function that we use. It's faily straightforward, but has a few extra elements to help with troubleshooting. 
+Here's the simulation function that we use. It's fairly straightforward, but has a few extra elements to help with troubleshooting. 
 
-```{r simulator, eval=T, include=T, message=F}
+```{r simulator, eval=T, include=T, message=F, class.source = NULL}
 
 require(oSCR)
 require(dplyr)
-
-
-"SIMULATOR"
 
 simulator<- function(traps, ss, N, p0, sigma, K, nsim, plot = TRUE) {
   
@@ -169,7 +173,7 @@ simulator<- function(traps, ss, N, p0, sigma, K, nsim, plot = TRUE) {
 ```
 
 
-## Set up and run simulation
+## Run simulations
 
 Running the simulations is straightforward with `simulator()`. 
 
@@ -205,6 +209,9 @@ simout <- simulator(
 ## Evaluate the results
 
 One of the most immediately interpretable evaluation metrics is percent relative bias ("%RB"), shown below, calculated for each parameter.
+
+$$ \%RB = 100 \sum{\frac{\hat{y} - y}{y}} $$
+
 
 Other useful metrics include (though not limited to): 
 

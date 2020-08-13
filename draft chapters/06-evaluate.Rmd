@@ -1,3 +1,0 @@
-# Evaluation by simulation {#evaluate}
-
-Lets convince ourselves that 'optimal' design beats a grid?
