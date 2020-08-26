@@ -34,7 +34,7 @@ The function also requires input values of *beta0* and *sigma* which will come f
 
 Before getting started, a few packages should be loaded:
 
-```{r pkgs}
+```{r create_objects_pkgs}
 library(oSCR)      # Design-generating function
 library(sf)        # Spatial data manipulation
 library(raster)    # Raster data manipulation

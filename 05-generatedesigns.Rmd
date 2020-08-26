@@ -2,17 +2,17 @@
 
 *Gates Dupont & Chris Sutherland*
 
-```{r load_RData, include=F}
+```{r gen_des_load_RData, include=F}
 load(file='04-createobjects.RData')
 ```
 
-Now with data, we can demonstrate the design-generation process using our novel framework. This framework employs a genetic algorithm to solve the *k-of-n* problem of trap selection according to one of the previously described design criteria, which are considered to be possible study objectives for selection by the user. For more detail on the genetic algorithim, we refer the reader to Wolters et al. (2015), as well as Appendix S1 in Dupont et al. (2020), which describes the algorithm in this context. The most important details, however, will be described below.
+Now with data, we can demonstrate the design-generation process using our novel framework. This framework employs a genetic algorithm to solve the *k-of-n* problem of trap selection according to one of the previously described design criteria, which are considered to be possible study objectives for selection by the user. For more detail on the genetic algorithim, we refer the reader to Wolters *et al.* (2015), as well as Appendix S1 in Dupont *et al.* (2020), which describes the algorithm in this context. The most important details, however, will be described below.
 
 ## Initial setup and parameterization
 
 Before getting started, a few packages should be loaded:
 
-```{r pkgs, message = F}
+```{r generate_designs_pkgs, message = F}
 library(oSCR)      # Design-generating function
 library(kofnGA)    # Genetic algorithm backend
 library(sf)        # Spatial data manipulation
@@ -36,7 +36,7 @@ beta0 <- 0.025
 sigma <- 3.250
 ```
 
-For refernce, you can derive beta0 from the baseline encounter probability, p0, and the number of sampling occassions, K.
+For refernce, you can derive beta0 from the baseline encounter probability, $p_0$, and the number of sampling occassions, $K$.
 
 ```{r solve_for_p0}
 # For reference, beta0 is log(p0 * K)
@@ -94,7 +94,7 @@ The critical thing to notice here is that the algorithm did not converge on a an
 
 ## Supply a cluster to the algorithm
 
-The lack of convergance means that we have to allow the algorithm to run for many more generations in order to find an "optimal" solution. According to Wolters et al. (2015), it's best to set `ngen` to 1500+ generations, which we have also confirmed with our own testing. Running the algorithm for so many generations certainly takes a bit longer, but to speed it up we can supply a cluster to the function and parallelize the process. Depending on your machine, this can greatly reduce the amount of time it takes to generate a design. We suggest using 1500 generations for generating the final design, along with bumping up `popsize` to 200 and `keepbest` to 10% of that, or here, 20. However, if you find that the algorithm will take far too long to finish on your machine, you can bump `popsize` back down to 50, and likewise, `keepbest` down to 5. Although this isn't considered best practice, we have yet to come across substaintially different results using those settings.
+The lack of convergance means that we have to allow the algorithm to run for many more generations in order to find an "optimal" solution. According to Wolters *et al.* (2015), it's best to set `ngen` to 1500+ generations, which we have also confirmed with our own testing. Running the algorithm for so many generations certainly takes a bit longer, but to speed it up we can supply a cluster to the function and parallelize the process. Depending on your machine, this can greatly reduce the amount of time it takes to generate a design. We suggest using 1500 generations for generating the final design, along with bumping up `popsize` to 200 and `keepbest` to 10% of that, or here, 20. However, if you find that the algorithm will take far too long to finish on your machine, you can bump `popsize` back down to 50, and likewise, `keepbest` down to 5. Although this isn't considered best practice, we have yet to come across substaintially different results using those settings.
 
 ```{r load_genetic_algo_1500, eval=T, include=F}
 testdesign <- readRDS("scrdesignGA_output/testdesign_200_20_1500.rds")
@@ -138,8 +138,8 @@ par(mfrow = c(1,1))           # Restore plotting settings
 ```
 
 
-Here we see that the design has converged after around 1100 generations, with the red line bottoming-out over the course of those last 400 generations, and the resulting design appears to exhibit the strucutural chracteristics that we expect from the Qpm criteria. It's worth taking a minute to compare the last two sets of plots to get a better understanding of how to know when your design has converged.
+Here we see that the design has converged after around 1100 generations, with the red line bottoming-out over the course of those last 400 generations, and the resulting design appears to exhibit the structural chracteristics that we expect from the Qpm criteria. It's worth taking a minute to compare the last two sets of plots to get a better understanding of how to know when your design has converged.
 
 We describe the strcutral characteristics of designs from each criteria as follows: for Qp, that would be space-filling, space-constraining for Qpm (explored in this example), and clustered space-filling for Qpb. The third plot shows a histogram of trap spacing relative to sigma, which is informative about the possible resolution of the design in capturing the value of sigma. In the case of the design we generated, resolution for capturing sigma should be comprehensive, given the variation in trap spacing.
 
-Once we have a final design, we recommend evaluating its performance using simulation, as done in Dupont et al. (2020).
+Once we have a final design, we recommend evaluating its performance using simulation, as done in Dupont *et al.* (2020).
